@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Petrovich</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="misc/libs-8d0dd6b566.min.css">
+    <link rel="stylesheet" type="text/css" href="misc/bundle-1732f80f0a.min.css">
+</head>
+<body>
+    <main id="main" class="grid container">
+        <div class="sub_category_page">
+            <div class="column_right column_right_products_container">
+                <div class="product__area">
+                 
+                <!--TEMPLATE-->
+                    <div id="products_section">
+                        <div class="products_page pg_0">
+							<template template>
+								<div v-bind:id="product.code" v-for="(product, key) in products" :key="product.id" v-if="product.isActive" class="product product_horizontal" >                                
+									<span class="product_code">Код: {{product.code}}</span>
+									<div class="product_status_tooltip_container">
+										<span class="product_status">Наличие</span>
+									</div>                                
+									<div class="product_photo">
+										<a href="#" class="url--link product__link">
+											<img v-bind:src="product.primaryImageUrl">
+										</a>                                    
+									</div>
+									<div class="product_description">
+										<a href="#" class="product__link">{{product.title}}</a>
+									</div>
+									<div v-for="items in product.assocProducts" class="product_tags hidden-sm">
+										<p>Могут понадобиться:</p>
+										<a href="#" v-for="(item,key) in items" :key="item.id" class="url--link">{{ item }}</a>
+									</div>
+									<div class="product_units">
+										<div class="unit--wrapper">
+											<div class="unit--select unit--active">
+												<p v-on:click="titleDimension" class="ng-binding">За {{product.unitAlt}}</p>
+											</div>
+											<div v-if="product.hasAlternateUnit" class="unit--select">
+												<p v-on:click="titleDimension" class="ng-binding">За {{product.unitFull | endingsText}}</p>
+											</div>
+										</div>
+									</div>
+									<p class="product_price_club_card">
+										<span class="product_price_club_card_text">По карте<br>клуба</span>
+										<span v-if="product.flagDimension" class="goldPrice">{{product.priceGold | rounding}}</span>
+										<span v-else class="goldPrice">{{product.priceGoldAlt | rounding}}</span>
+										<span class="rouble__i black__i">
+											<svg version="1.0" id="rouble__b" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_black"></use>
+											</svg>
+										</span>
+									</p>
+									<p class="product_price_default">
+										<span v-if="product.flagClub"  class="retailPrice">{{product.priceRetail | rounding}}</span>
+										<span v-else class="retailPrice">{{product.priceRetailAlt | rounding}}</span>
+										<span class="rouble__i black__i">
+											<svg version="1.0" id="rouble__g" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_gray"></use>
+											</svg>
+										</span>
+									</p>
+									<div class="product_price_points">
+										<p class="ng-binding">Можно купить за 231,75 балла</p>
+									</div>
+									<div class="list--unit-padd"></div>
+									<div class="list--unit-desc">
+										<div class="unit--info">
+											<div class="unit--desc-i"></div>
+											<div class="unit--desc-t">
+												<p>
+													<span class="ng-binding">Продается упаковками:</span>
+													<span class="unit--infoInn">{{product.unitRatio}} {{product.unit}} = {{product.unitRatioAlt}} {{product.unitAlt}} </span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="product__wrapper">
+										<div class="product_count_wrapper">
+											<div class="stepper">
+												<input class="product__count stepper-input" type="text" value="1">
+												<span v-on:click="plus" class="stepper-arrow up"></span>
+												<span v-on:click="minus" class="stepper-arrow down"></span>                                            
+											</div>
+										</div>
+										<span class="btn btn_cart" data-url="/cart/" v-bind:data-product-id="product.productId">
+											<svg class="ic ic_cart">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart"></use>
+											</svg>
+											<span class="ng-binding">В корзину</span>
+										</span>
+									</div>
+								</div>
+							</template>
+                        </div>
+					</div>
+                <!--TEMPLATE-->
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
+
